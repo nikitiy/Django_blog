@@ -1,0 +1,25 @@
+{% extends 'blog/template.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+<div class="col-md-8">
+    <div class="border border-dark mt-4 p-3">
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.text }}</p>
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{ object.author.profile.image.url }}" alt="{{ object.author }}" class="user_images">
+            </div>
+            <div class="col-md-11 mt-2">
+                <span class="text-muted">Публикация: {{ object.date|date:"d E Y г. в H:i" }}</span>
+                <p><b>Автор:</b>
+                    <mark>{{ object.author }}</mark>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

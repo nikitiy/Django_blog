@@ -1,0 +1,30 @@
+{% extends 'blog/template.html' %}
+
+{% block main %}
+<div class="col-md-12 mt-5">
+    <div class="border border-light rounded bg-light p-3">
+        <div class="media text-muted">
+            <img class="d-inline-block user_images" src="{{ user.profile.image.url }}">
+            <p class="media-body border-bottom border-gray d-inline-block ms-3">
+                <strong class="d-block text-gray-dark">Привет @{{ user.username }}</strong>
+                {{ user.email }}
+            </p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="border border-light rounded bg-light p-3">
+                    <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        {{ userUpdate }}
+                        {{ imageUpdate }}
+                        <button class="btn btn-outline-primary mt-5 float-end" type="submit">Обновить данные</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

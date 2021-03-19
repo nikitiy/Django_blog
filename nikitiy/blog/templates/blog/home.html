@@ -1,0 +1,46 @@
+{% extends 'blog/template.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+<div class="col-md-8">
+    {% if messages %}
+        {% for mess in messages %}
+            <div class="alert alert-success mt-5">{{ mess }}</div>
+        {% endfor %}
+    {% endif %}
+    {% for news in article %}
+    <div class="border border-dark rounded mt-4 p-3">
+        <h1>{{ news.title }}</h1>
+        <p>{{ news.text }}</p>
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{ news.author.profile.image.url }}" alt="{{ post.author }}" class="user_images">
+            </div>
+            <div class="col-md-11 mt-2">
+                <span class="text-muted">Публикация: {{ news.date|date:"d E Y г. в H:i" }}</span>
+                <p><b>Автор:</b>
+                    <mark>{{ news.author }}</mark>
+                </p>
+            </div>
+        </div>
+        <a class="btn btn-outline-warning mt-3" href="{% url 'detailView' news.id %}">Подробнее</a>
+    </div>
+    {% endfor %}
+
+</div>
+<div class="col-md-4 mt-4">
+    <h3>Боковая часть</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At debitis dicta magnam nisi numquam quia!</p>
+    <h4 class="mt-2">Интересные статьи</h4>
+    <div class="p-3 border border-dark rounded">
+        <img src="https://cdn25.img.ria.ru/images/07e5/03/11/1601702456_0:0:3069:2048_1440x900_80_0_1_d3806db44459e739c207a6f370aa62b5.jpg.webp?source-sid=reuters_photo" class="img-thumbnail mt-4">
+        <p>Многие американцы опасаются, что из-за действий американского лидера страна может столкнуться с большими проблемами. Некоторые участники дискуссии посчитали, что Байден стал заложником "банды мошенников-демократов", которые привели его к власти.</p>
+        <a href="https://ria.ru/20210319/bayden-1601995371.html?in=t">
+            <button class="btn btn-warning">Посмотреть</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

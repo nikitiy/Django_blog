@@ -1,0 +1,16 @@
+{% extends 'blog/template.html' %}
+
+{% block main %}
+<div class="col-md-8 mt-5">
+    <div class="border border-light rounded bg-light p-3">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <div class="col-12">
+                <button class="btn btn-outline-primary mb-4 mt-3" type="submit">Зарегистрироваться</button>
+            </div>
+            <p class="form-text mt-5 float-end">Уже зарегистрированы? <a href="{% url 'login' %}">Войти</a></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
